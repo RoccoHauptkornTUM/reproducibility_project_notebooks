@@ -1,0 +1,13 @@
+=== Monte Carlo π Estimation Summary ===
+
+Convergence Results:
+ samples  pi_estimate    error  time_sec
+     100       3.2000 0.058407  0.000000
+    1000       3.1120 0.029593  0.000000
+   10000       3.1556 0.014007  0.000696
+  100000       3.1376 0.003993  0.005211
+
+Repeated Trials (n=1000, samples=10000):
+Mean π: 3.142464
+Std Dev: 0.016320
+Min π: 3.086000, Max π: 3.194400

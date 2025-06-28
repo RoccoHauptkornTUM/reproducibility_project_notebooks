@@ -1,0 +1,50 @@
+=== Business Analytics Summary ===
+
+Top 5 Customers by Total Revenue:
+   Customer  Unique Orders  Total Revenue  Avg Basket  Total Items  Repeat Buyer  Segment
+Customer 47             13       14670.59  337.523077           41          True        0
+Customer 49             14       14595.78  369.558571           39          True        0
+ Customer 5             18       12906.81  350.630000           37          True        0
+Customer 26             16       12664.23  295.933125           39          True        0
+Customer 16             13       11755.11  363.080000           34          True        0
+
+Monthly Sales Overview:
+  Month    Sales
+2023-01  6858.00
+2023-02 11086.48
+2023-03  5794.59
+2023-04 10539.30
+2023-05 11852.38
+2023-06 11414.83
+2023-07 10893.02
+2023-08 11004.09
+2023-09 11862.86
+2023-10  9469.62
+2023-11 11204.46
+2023-12 12188.03
+2024-01 11077.37
+2024-02  8531.73
+2024-03  9436.98
+
+Top Products by Sales:
+        Product    Sales  Quantity  Num Orders
+        Headset 28010.68       248          96
+         Laptop 27004.25       228          85
+          Mouse 26445.64       192          84
+Docking Station 25506.17       201          80
+       Keyboard 23577.67       194          76
+
+Customer Segment Summary:
+         Total Revenue  Avg Basket  Unique Orders  Num Customers
+Segment                                                         
+0         11680.220000  333.601552      13.583333             12
+1          4544.115455  252.288222       6.636364             11
+2          7427.355000  371.953533       7.916667             12
+3          7545.168000  271.101030      11.266667             15
+
+Correlations Between Customer Metrics:
+               Unique Orders  Total Revenue  Avg Basket  Total Items
+Unique Orders       1.000000       0.764616    0.014961     0.903452
+Total Revenue       0.764616       1.000000    0.488113     0.870849
+Avg Basket          0.014961       0.488113    1.000000     0.075660
+Total Items         0.903452       0.870849    0.075660     1.000000
