@@ -1,4 +1,4 @@
-# === Imports ===
+# === Step 1: Imports ===
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -8,7 +8,7 @@ from sklearn.cluster import KMeans
 from datetime import datetime
 import os
 
-# === Step 1: Load data ===
+# === Step 2: Load data ===
 df = pd.read_csv("sales_data_large.csv", parse_dates=["Order Date"])
 output_dir = "ba_output"
 os.makedirs(output_dir, exist_ok = True)
@@ -19,13 +19,13 @@ print(df.head())
 print("\nData description:")
 print(df.describe())
 
-# === Step 2: Clean up ===
+# === Step 3: Clean up ===
 df = df.dropna()
 df["Order Date"] = pd.to_datetime(df["Order Date"])
 df["Month"] = df["Order Date"].dt.to_period("M")
 df["Total Value"] = df["Sales"] * df["Quantity"]
 
-# === Step 3: Customer analysis ===
+# === Step 4: Customer analysis ===
 customer_sales = df.groupby("Customer").agg({
     "Order ID": "nunique",
     "Total Value": "sum",
@@ -46,7 +46,7 @@ customer_sales = customer_sales.merge(repeat_customers[["Customer", "Repeat Buye
 print("\nTop 5 Customers:")
 print(customer_sales.sort_values("Total Revenue", ascending=False).head())
 
-# === Step 4: Sales analysis ===
+# === Step 5: Sales analysis ===
 monthly_sales = df.groupby("Month")["Sales"].sum().reset_index()
 monthly_sales["Month"] = monthly_sales["Month"].astype(str)
 
@@ -58,7 +58,7 @@ plt.tight_layout()
 plt.savefig(os.path.join(output_dir, "monthly_sales_trend.png"))
 plt.close()
 
-# === Step 5: Product analysis ===
+# === Step 6: Product analysis ===
 product_perf = df.groupby("Product").agg({
     "Sales": "sum",
     "Quantity": "sum",
@@ -72,7 +72,7 @@ plt.tight_layout()
 plt.savefig(os.path.join(output_dir, "top_products.png"))
 plt.close()
 
-# === Step 6: Heatmap correlations ===
+# === Step 7: Heatmap correlations ===
 plt.figure(figsize=(8,6))
 corr = customer_sales[["Unique Orders", "Total Revenue", "Avg Basket", "Total Items"]].corr()
 sns.heatmap(corr, annot=True, cmap="coolwarm")
@@ -89,7 +89,7 @@ scaled = scaler.fit_transform(clustering_data)
 kmeans = KMeans(n_clusters=4, random_state=42)
 customer_sales["Segment"] = kmeans.fit_predict(scaled)
 
-# === Step 7: Segment analysis ===
+# === Step 8: Segment analysis ===
 segment_summary = customer_sales.groupby("Segment").agg({
     "Total Revenue": "mean",
     "Avg Basket": "mean",
@@ -100,7 +100,7 @@ segment_summary = customer_sales.groupby("Segment").agg({
 print("\nSegment overview:")
 print(segment_summary)
 
-# === Step 8: Visualization: Customer clusters ===
+# === Step 9: Visualization: Customer clusters ===
 plt.figure(figsize=(8,6))
 sns.scatterplot(
     x=customer_sales["Total Revenue"],
@@ -113,7 +113,7 @@ plt.tight_layout()
 plt.savefig(os.path.join(output_dir, "customer_segments.png"))
 plt.close()
 
-# === Step 9: Export results ===
+# === Step 10: Export results ===
 customer_sales.to_csv(os.path.join(output_dir, "customer_segmentation.csv"), index=False)
 segment_summary.to_csv(os.path.join(output_dir, "segment_summary.csv"))
 
