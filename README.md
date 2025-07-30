@@ -44,9 +44,9 @@ Click below to open the notebooks in a temporary, cloud-based environment:
 ---
 ### Option 2: Run on CodeOcean
 
-To run the project on [CodeOcean](https://codeocean.com/):
+To run the project on [CodeOcean](https://codeocean.com/dashboard):
 
-1. **Create a free account** at [https://codeocean.com](https://codeocean.com)
+1. **Create a free account** at [https://codeocean.com](https://codeocean.com/login)
 2. **Click "Create New Compute Capsule"**
 3. Choose:
    - **"Copy from public Git"**
